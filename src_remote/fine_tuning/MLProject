@@ -2,7 +2,7 @@
 
 name: training
 
-conda_env: "../yml/training.yml"
+conda_env: "../../yml/training.yml"
 
 entry_points:
   main:

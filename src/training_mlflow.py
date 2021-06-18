@@ -70,3 +70,5 @@ with mlflow.start_run():
 
     log_artifact("joblib/census_model.joblib")
     log_artifact("joblib/scaler.joblib")
+
+    log_artifact("yml/fine_tuning.yml")

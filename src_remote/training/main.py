@@ -22,7 +22,7 @@ if __name__ == "__main__":
     with mlflow.start_run():
 
         # Load dataset
-        file = "../data/adult_census.csv"
+        file = "../../data/adult_census.csv"
         log_param("file_name", file)
         df = pd.read_csv(file, encoding="latin-1")
 
@@ -53,7 +53,7 @@ if __name__ == "__main__":
             le = preprocessing.LabelEncoder()
             X_train[feature] = le.fit_transform(X_train[feature])
             X_test[feature] = le.transform(X_test[feature])
-            dump(le, "../joblib/le." + feature + ".joblib")                            # Save the label encoders and re-use them during prediction
+            dump(le, "../../joblib/le." + feature + ".joblib")                            # Save the label encoders and re-use them during prediction
 
         scaler = StandardScaler()
         X_train = pd.DataFrame(scaler.fit_transform(X_train), columns=X.columns)
@@ -66,16 +66,12 @@ if __name__ == "__main__":
         # Run evaluation
         y_pred = logreg.predict(X_test)
 
-        print(
-            "Logistic Regression accuracy score with all the features: {0:0.4f}".format(
-                accuracy_score(y_test, y_pred)
-            )
-        )
-
         log_param("accuracy", accuracy_score(y_test, y_pred))
 
-        dump(logreg, "../joblib/census_model.joblib")
-        dump(scaler, "../joblib/scaler.joblib")                                        # Save the scaler and re-use them during prediction
+        dump(logreg, "../../joblib/census_model.joblib")
+        dump(scaler, "../../joblib/scaler.joblib")                                        # Save the scaler and re-use them during prediction
 
-        log_artifact("../joblib/census_model.joblib")
-        log_artifact("../data/joblib/scaler.joblib")
+        log_artifact("../../joblib/census_model.joblib")
+        log_artifact("../../joblib/scaler.joblib")
+
+        log_artifact("../../yml/training.yml")

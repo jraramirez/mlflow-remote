@@ -120,3 +120,5 @@ if __name__ == "__main__":
         log_artifact("joblib/le.marital.status.joblib")
 
         log_artifact("data/fine-tuning.csv")
+
+        log_artifact("yml/training.yml")

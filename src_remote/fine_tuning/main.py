@@ -22,7 +22,7 @@ if __name__ == "__main__":
         mlflow.set_experiment("IncomePrediction")
 
         # Load dataset
-        file = "../data/adult_census.csv"
+        file = "../../data/adult_census.csv"
         df = pd.read_csv(file, encoding="latin-1")
 
         # Clean up Missing values
@@ -50,7 +50,7 @@ if __name__ == "__main__":
             le = preprocessing.LabelEncoder()
             X_train[feature] = le.fit_transform(X_train[feature])
             X_test[feature] = le.transform(X_test[feature])
-            dump(le, "../joblib/le." + feature + ".joblib")                            # Save the label encoders and re-use them during prediction
+            dump(le, "../../joblib/le." + feature + ".joblib")                            # Save the label encoders and re-use them during prediction
 
         scaler = StandardScaler()
         X_train = pd.DataFrame(scaler.fit_transform(X_train), columns=X.columns)
@@ -114,11 +114,11 @@ if __name__ == "__main__":
         r['Solver'] = model_results['Solver']
         r['Accuracy'] = model_results['Accuracy']
 
-        r.to_csv("../data/fine-tuning.csv", index=False)
+        r.to_csv("../../data/fine-tuning.csv", index=False)
 
-        log_artifact("../joblib/census_model.joblib")
-        log_artifact("../joblib/scaler.joblib")
-        log_artifact("../joblib/le.education.joblib")
-        log_artifact("../joblib/le.marital.status.joblib")
+        log_artifact("../../joblib/census_model.joblib")
+        log_artifact("../../joblib/scaler.joblib")
+        log_artifact("../../joblib/le.education.joblib")
+        log_artifact("../../joblib/le.marital.status.joblib")
 
-        log_artifact("../data/fine-tuning.csv")
+        log_artifact("../../data/fine-tuning.csv")
