@@ -22,7 +22,7 @@ if __name__ == "__main__":
     with mlflow.start_run():
 
         # Load dataset
-        file = "../adult_census.csv"
+        file = "../data/adult_census.csv"
         log_param("file_name", file)
         df = pd.read_csv(file, encoding="latin-1")
 
@@ -78,4 +78,4 @@ if __name__ == "__main__":
         dump(scaler, "../joblib/scaler.joblib")                                        # Save the scaler and re-use them during prediction
 
         log_artifact("../joblib/census_model.joblib")
-        log_artifact("../joblib/scaler.joblib")
+        log_artifact("../data/joblib/scaler.joblib")

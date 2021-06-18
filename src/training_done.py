@@ -19,7 +19,7 @@ from mlflow import log_metric, log_param, log_artifact
 with mlflow.start_run():
 
     # Load dataset
-    file = "adult_census.csv"
+    file = "data/adult_census.csv"
     log_param("data", file)
     df = pd.read_csv(file, encoding="latin-1")
 
