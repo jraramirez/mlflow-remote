@@ -1,0 +1,9 @@
+# training
+
+name: training
+
+conda_env: "../yml/training.yml"
+
+entry_points:
+  main:
+    command: "python3 main.py"
