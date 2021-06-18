@@ -1,4 +1,4 @@
 mlruns/
-data/
-artifacts/
-joblib/
+# data/
+# artifacts/
+# joblib/
